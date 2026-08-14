@@ -42,7 +42,7 @@ book-recommender-system/
 ## Running Locally
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/shre26/book-recommender-system.git
 cd book-recommender-system
 
 python -m venv .venv
