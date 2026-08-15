@@ -1,13 +1,14 @@
 import sys
-import streamlit as st
 from html import escape
 from pathlib import Path
-from streamlit_app.utils import load_popular_books
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+
+import streamlit as st
+from streamlit_app.utils import load_popular_books
 
 def html_block(s):
     return "\n".join(line.strip() for line in s.strip().splitlines())

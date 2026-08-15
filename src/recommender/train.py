@@ -1,3 +1,4 @@
+# src/recommender/train.py
 import pickle
 from src.recommender import config
 from src.recommender.data_loader import load_all
@@ -25,10 +26,13 @@ def main():
     similarity = compute_similarity(pivot)
     save_pickle(similarity, "similarity_scores.pkl")
 
-    save_pickle(books, "books_meta.pkl")
+    relevant_titles = set(pivot.index) | set(popular_df["Book-Title"])
+    books_meta = books[books["Book-Title"].isin(relevant_titles)].drop_duplicates("Book-Title")
+    save_pickle(books_meta, "books_meta.pkl")
 
     print(f"Done. Pivot table shape: {pivot.shape}")
     print(f"Popular books: {len(popular_df)} | Similarity matrix: {similarity.shape}")
+    print(f"books_meta trimmed to {len(books_meta)} rows")
 
 if __name__ == "__main__":
     main()

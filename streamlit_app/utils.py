@@ -1,7 +1,12 @@
+# streamlit_app/utils.py
 import pickle
 import streamlit as st
 from src.recommender import config
 
+def to_https(url):
+    if isinstance(url, str) and url.startswith("http://"):
+        return "https://" + url[len("http://"):]
+    return url
 
 @st.cache_resource
 def load_pivot_table():
@@ -16,12 +21,16 @@ def load_similarity_scores():
 @st.cache_resource
 def load_popular_books():
     with open(config.MODELS_DIR / "popular_books.pkl", "rb") as f:
-        return pickle.load(f)
+        df = pickle.load(f)
+        df["Image-URL-M"] = df["Image-URL-M"].apply(to_https)
+        return df
 
 @st.cache_resource
 def load_books_meta():
     with open(config.MODELS_DIR / "books_meta.pkl", "rb") as f:
-        return pickle.load(f)
+        df = pickle.load(f)
+        df["Image-URL-M"] = df["Image-URL-M"].apply(to_https)
+        return df
 
 def get_book_image(books_meta, title, default="https://placehold.co/150x220?text=No+Cover"):
     row = books_meta[books_meta["Book-Title"] == title]

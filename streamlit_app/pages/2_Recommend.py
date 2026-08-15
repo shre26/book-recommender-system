@@ -2,13 +2,14 @@ import streamlit as st
 import sys
 from pathlib import Path
 from html import escape
-from src.recommender.collaborative_model import recommend
-from streamlit_app.utils import load_pivot_table, load_similarity_scores, load_books_meta
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.recommender.collaborative_model import recommend
+from streamlit_app.utils import load_pivot_table, load_similarity_scores, load_books_meta
 
 def html_block(s: str) -> str:
     return "\n".join(line.strip() for line in s.strip().splitlines())

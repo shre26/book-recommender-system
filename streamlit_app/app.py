@@ -36,7 +36,9 @@ with col1:
         """
         <div class="feature-card">
             <div class="feature-icon">🏆</div>
-            <h3>Popular Books</h3>
+            <a href="Popular_Books" target="_self" class="card-link">
+                <h3>Popular Books</h3>
+            </a>
             <p> Explore highly-rated books that are loved by
                 a large number of readers.</p>
         </div>
@@ -48,7 +50,9 @@ with col2:
         """
         <div class="feature-card">
             <div class="feature-icon">📚</div>
-            <h3>Similar Books</h3>
+            <a href="Recommend" target="_self" class="card-link">
+                <h3>Similar Books</h3>
+            </a>
             <p>Choose a book you enjoyed and discover titles
                 with similar reader preferences.</p>
         </div>
@@ -60,7 +64,9 @@ with col3:
         """
         <div class="feature-card">
             <div class="feature-icon">🤖</div>
-            <h3>Smart Recommendation</h3>
+            <a href="Recommend" target="_self" class="card-link">
+                <h3>Smart Recommendation</h3>
+            </a>
             <p>Recommendations are generated using item-based
                 collaborative filtering.</p>
         </div>
